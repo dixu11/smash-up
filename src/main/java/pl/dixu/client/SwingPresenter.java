@@ -40,6 +40,10 @@ public class SwingPresenter implements Presenter {
         g.translate(point.x, point.y);
         locationDeck.render(g);
         g.translate(-point.x, -point.y);
-
+        point = layout.getPlayerDrawPosition(0);
+        System.out.println(point);
+        g.translate(point.x, point.y);
+        player1Deck.render(g);
+        g.translate(-point.x, -point.y);
     }
 }
