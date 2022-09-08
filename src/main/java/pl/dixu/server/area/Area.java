@@ -20,5 +20,7 @@ public class Area {
     }
 
 
-
+    public Card getLocationCard() {
+        return location;
+    }
 }

@@ -30,7 +30,7 @@ public class Server {
     public void play() {
         onGameStart();
         presenter.startGame();
-        presenter.showLocations(activeAreas);
+        presenter.initAreas(activeAreas);
     }
 
     private void onGameStart() {

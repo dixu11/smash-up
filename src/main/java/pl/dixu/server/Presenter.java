@@ -9,5 +9,5 @@ public interface Presenter {
 
     void startGame();
 
-    void showLocations(List<Area> activeAreas);
+    void initAreas(List<Area> activeAreas);
 }
