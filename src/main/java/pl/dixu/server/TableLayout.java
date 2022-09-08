@@ -26,4 +26,13 @@ public class TableLayout {
         return new Point(LOCATION_ROW_X + locationIndex * LOCATION_ROW_GAP + locationIndex * CARD_HEIGHT, LOCATION_ROW_Y);
     }
 
+    public Point getLocationDrawDeckPosition(){
+        return new Point(LOCATION_ROW_X - CARD_WIDTH - LOCATION_ROW_GAP/2, (int) (LOCATION_ROW_Y - HEIGHT*0.03));
+    }
+
+    public Point getLocationDiscardPosition() {
+        return null;
+        //todo
+    }
+
 }
