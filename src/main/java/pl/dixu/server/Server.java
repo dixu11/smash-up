@@ -4,6 +4,7 @@ import pl.dixu.server.area.Area;
 import pl.dixu.server.card.Card;
 import pl.dixu.server.player.Player;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -18,8 +19,8 @@ public class Server {
     private CardFactory cardFactory = new CardFactory();
 
     private Queue<Player> players;
-    private List<Area> activeAreas;
     private Queue<Card> areasDeck;
+    private List<Area> activeAreas = new ArrayList<>();
 
     public Server(Presenter presenter) {
         this.presenter = presenter;
@@ -28,6 +29,8 @@ public class Server {
 
     public void play() {
         onGameStart();
+        presenter.startGame();
+        presenter.showLocations(activeAreas);
     }
 
     private void onGameStart() {
