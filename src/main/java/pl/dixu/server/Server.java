@@ -1,6 +1,7 @@
 package pl.dixu.server;
 
 import pl.dixu.server.area.Area;
+import pl.dixu.server.card.Card;
 import pl.dixu.server.player.Player;
 
 import java.util.LinkedList;
@@ -12,25 +13,31 @@ import java.util.stream.IntStream;
 public class Server {
 
     public static final int DEFAULT_PLAYERS_COUNT = 2;
+    public static final int DEFAULT_STARTING_AREAS_COUNT = 3;
     private Presenter presenter;
     private CardFactory cardFactory = new CardFactory();
 
     private Queue<Player> players;
-    private List<Area> areas;
+    private List<Area> activeAreas;
+    private Queue<Card> areasDeck;
 
     public Server(Presenter presenter) {
         this.presenter = presenter;
     }
 
-    public void onGameStart() {
-        //przygotować talie graczy
-        players = createPlayers(DEFAULT_PLAYERS_COUNT);
-        //przygotować talie lokacji
-        areas = createAreas(DEFAULT_PLAYERS_COUNT);
-        //ustawić startowego gracza
-        //dociągnąć 3 lokacje
-        //odpalić start tury dla gracza 1
+
+    public void play() {
+        onGameStart();
     }
+
+    private void onGameStart() {
+        players = createPlayers(DEFAULT_PLAYERS_COUNT);
+        areasDeck = createAreasDeck();
+        addStartingAreas(DEFAULT_STARTING_AREAS_COUNT);
+    }
+
+
+
 
     private Queue<Player> createPlayers(int count) {
         return IntStream.range(0, count)
@@ -39,11 +46,21 @@ public class Server {
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    private List<Area> createAreas(int count) {
-        return cardFactory.getLocations()
-                .stream()
-                .map(card -> new Area(card, DEFAULT_PLAYERS_COUNT))
-                .toList();
+    private Queue<Card> createAreasDeck() {
+        return new LinkedList<>(cardFactory.getLocations());
+    }
+
+    private void addStartingAreas(int count){
+        IntStream.range(0,count)
+                .forEach(i -> addArea());
+    }
+
+  private void addArea(){
+        activeAreas.add( new Area( areasDeck.remove(), DEFAULT_PLAYERS_COUNT));
+  }
+
+    public Player getActualPlayer() {
+        return players.element();
     }
 
 
