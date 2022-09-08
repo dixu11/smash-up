@@ -1,5 +1,6 @@
 package pl.dixu.client;
 
+import pl.dixu.server.TableLayout;
 import pl.dixu.server.card.Card;
 
 import java.awt.*;
@@ -14,7 +15,8 @@ public class CardView {
     }
 
     public void render(Graphics g) {
-        g.drawImage(image, 0, 0, null);
+        //card is rotated 90^
+        g.drawImage(image, 0, 0, TableLayout.CARD_HEIGHT,TableLayout.CARD_WIDTH, null);
     }
 
 }

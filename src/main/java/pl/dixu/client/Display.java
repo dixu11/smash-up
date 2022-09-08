@@ -1,5 +1,7 @@
 package pl.dixu.client;
 
+import pl.dixu.server.TableLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -9,8 +11,8 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 //manages game frame and canvas
 public final class Display {
 
-    private static final int DEFAULT_WIDTH = 600;
-    private static final int DEFAULT_HEIGHT =600;
+    private static final int DEFAULT_WIDTH = TableLayout.WIDTH;
+    private static final int DEFAULT_HEIGHT =TableLayout.HEIGHT;
 
     private static int width;
     private static int height;
@@ -37,7 +39,7 @@ public final class Display {
 
         frame.setSize(size);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        frame.setLocation(2320,0);
         frame.setResizable(false);
     }
 

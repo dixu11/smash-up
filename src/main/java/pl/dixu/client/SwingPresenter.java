@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SwingPresenter implements Presenter {
 
-    private List<AreaView> areas = new ArrayList<>();
+    private final List<AreaView> areas = new ArrayList<>();
 
     @Override
     public void startGame() {
@@ -18,9 +18,9 @@ public class SwingPresenter implements Presenter {
 
     @Override
     public void initAreas(List<Area> activeAreas) {
-       areas= activeAreas.stream()
-                .map(AreaView::new)
-                .toList();
+        for (int i = 0; i < activeAreas.size(); i++) {
+            areas.add(new AreaView(activeAreas.get(i),i));
+        }
     }
 
     public void tick() {

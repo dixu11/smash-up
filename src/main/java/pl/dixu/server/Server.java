@@ -13,8 +13,7 @@ import java.util.stream.IntStream;
 
 public class Server {
 
-    public static final int DEFAULT_PLAYERS_COUNT = 2;
-    public static final int DEFAULT_STARTING_AREAS_COUNT = 3;
+
     private Presenter presenter;
     private CardFactory cardFactory = new CardFactory();
 
@@ -34,9 +33,9 @@ public class Server {
     }
 
     private void onGameStart() {
-        players = createPlayers(DEFAULT_PLAYERS_COUNT);
+        players = createPlayers(GameSetup.DEFAULT_PLAYERS_COUNT);
         areasDeck = createAreasDeck();
-        addStartingAreas(DEFAULT_STARTING_AREAS_COUNT);
+        addStartingAreas(GameSetup.DEFAULT_STARTING_AREAS_COUNT);
     }
 
 
@@ -59,7 +58,7 @@ public class Server {
     }
 
   private void addArea(){
-        activeAreas.add( new Area( areasDeck.remove(), DEFAULT_PLAYERS_COUNT));
+        activeAreas.add( new Area( areasDeck.remove(), GameSetup.DEFAULT_PLAYERS_COUNT));
   }
 
     public Player getActualPlayer() {
