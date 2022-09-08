@@ -8,12 +8,13 @@ public class TableLayout {
 
     public static final int WIDTH = 1920;
     public static final int HEIGHT = 1080;
-    public static final int CARD_HEIGHT = 256; //todo resize refactor - width /7?
-    public static final int CARD_WIDTH = 183 ;
+    private static final double CARD_SIZE_MODIFIER = 0.17;
+    public static final int CARD_HEIGHT = (int) (1024*CARD_SIZE_MODIFIER);
+    public static final int CARD_WIDTH = (int) (734*CARD_SIZE_MODIFIER);
 
     private static final int LOCATION_ROW_X = (int) (WIDTH * 0.2);
-    private static final int LOCATION_ROW_Y = (int) (HEIGHT * 0.4);
-    private static final int LOCATION_ROW_GAP = (int) (WIDTH * 0.1);
+    private static final int LOCATION_ROW_Y = (int) (HEIGHT * 0.35);
+    private static final int LOCATION_ROW_GAP = (int) (WIDTH * 0.15);
     private static final int YOUR_DECK_X = (int) (WIDTH * 0.2);
     private static final int YOUR_DECK_Y = (int) (HEIGHT * 0.8);
 
