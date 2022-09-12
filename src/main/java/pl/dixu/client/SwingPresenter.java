@@ -13,9 +13,9 @@ import java.util.List;
 public class SwingPresenter implements Presenter {
 
     private final List<AreaView> areas = new ArrayList<>();
-    private final DeckView locationDeck = CardViewFactory.initDeckCover(DeckType.LOCATION);
-    private final DeckView player1Deck = CardViewFactory.initDeckCover(DeckType.PLAYER);
-    private final DeckView player2Deck = CardViewFactory.initDeckCover(DeckType.PLAYER);
+    private final DeckView locationDeck = ImageManager.initDeckCover(DeckType.LOCATION);
+    private final DeckView player1Deck = ImageManager.initDeckCover(DeckType.PLAYER);
+    private final DeckView player2Deck = ImageManager.initDeckCover(DeckType.PLAYER);
 
     @Override
     public void startGame() {
@@ -41,7 +41,6 @@ public class SwingPresenter implements Presenter {
         locationDeck.render(g);
         g.translate(-point.x, -point.y);
         point = layout.getPlayerDrawPosition(0);
-        System.out.println(point);
         g.translate(point.x, point.y);
         player1Deck.render(g);
         g.translate(-point.x, -point.y);

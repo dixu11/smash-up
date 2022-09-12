@@ -8,15 +8,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class CardViewFactory {
+public class ImageManager {
 
-    public static CardView initCardView(Card card) {
+    public static Image getImage(Card card) {
         String cardFileName = switch (card.getType()) {
             case LOCATION -> "location";
             case ACTION -> "action";
             case MINION -> "minion";
         };
-        return new CardView(card, readImage(cardFileName));
+        return readImage(cardFileName+ card.getIndex());
     }
 
     public static DeckView initDeckCover(DeckType deckType){
@@ -27,6 +27,7 @@ public class CardViewFactory {
         return new DeckView(readImage(cardFileName));
     }
 
+
     private static Image readImage(String fileName) {
         File file = new File(String.format("src/main/resources/%s.png",fileName));
         try {
@@ -35,6 +36,5 @@ public class CardViewFactory {
             throw new IllegalStateException(e);
         }
     }
-
 
 }

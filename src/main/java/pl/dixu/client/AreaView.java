@@ -11,6 +11,7 @@ public class AreaView {
 
     private Area area;
     private int index;
+    private LocationView locationView = new LocationView();
 
     public AreaView(Area area, int index) {
         this.area = area;
@@ -18,11 +19,11 @@ public class AreaView {
     }
 
     public void render(Graphics g){
-        CardView cardView = CardViewFactory.initCardView(area.getLocationCard());
+        locationView.updateCard(area.getLocationCard());
         TableLayout layout = TableLayout.getInstance();
         Point point = layout.getLocationPosition(index);
         g.translate(point.x, point.y);
-        cardView.render(g);
+        locationView.render(g);
         g.translate(-point.x, -point.y);
     }
 }
