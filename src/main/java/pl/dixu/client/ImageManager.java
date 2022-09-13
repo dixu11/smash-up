@@ -1,6 +1,5 @@
 package pl.dixu.client;
 
-import pl.dixu.server.card.Card;
 import pl.dixu.server.card.DeckType;
 
 import javax.imageio.ImageIO;
@@ -16,10 +15,10 @@ public class ImageManager {
 
     public static DeckView initDeckCover(DeckType deckType){
         String cardFileName = switch (deckType) {
-            case LOCATION -> "locationCover";
+            case LOCATION ->  "locationCover";
             case PLAYER -> "playerCover";
         };
-        return new DeckView(readImage(cardFileName));
+        return new DeckView(readImage(cardFileName), deckType.isTap());
     }
 
 

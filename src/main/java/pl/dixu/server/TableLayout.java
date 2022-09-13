@@ -32,7 +32,7 @@ public class TableLayout {
     }
 
     public Point getLocationDrawDeckPosition(){
-        return new Point(LOCATION_ROW_X - CARD_WIDTH - LOCATION_ROW_GAP/2, (int) (LOCATION_ROW_Y - HEIGHT*0.03));
+        return new Point(LOCATION_ROW_X - CARD_WIDTH - LOCATION_ROW_GAP/2, LOCATION_ROW_Y );
     }
 
     public Point getLocationDiscardPosition() {
