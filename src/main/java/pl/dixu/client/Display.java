@@ -13,6 +13,9 @@ public final class Display {
 
     private static final int DEFAULT_WIDTH = TableLayout.WIDTH;
     private static final int DEFAULT_HEIGHT =TableLayout.HEIGHT;
+    public static final int MONITOR1 = 0;
+    public static final int MONITOR2 = 2320;
+    public static  int LOCATION_X_POSITION = MONITOR1;
 
     private static int width;
     private static int height;
@@ -39,7 +42,7 @@ public final class Display {
 
         frame.setSize(size);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setLocation(2320,0);
+        frame.setLocation(LOCATION_X_POSITION,0);
         frame.setResizable(false);
     }
 

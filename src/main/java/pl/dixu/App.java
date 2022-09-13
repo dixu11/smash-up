@@ -7,6 +7,9 @@ import pl.dixu.server.Server;
 
 public class App {
     public static void main(String[] args) {
+        //configuration
+        Display.LOCATION_X_POSITION = Display.MONITOR2; //if you don't see game, change to MONITOR1
+
         Display display = new Display("Smash Up");
         SwingPresenter client = new SwingPresenter();
         GameEngine gameEngine = new GameEngine(display,client);
