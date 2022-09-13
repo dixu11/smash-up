@@ -2,6 +2,7 @@ package pl.dixu;
 
 import pl.dixu.client.Display;
 import pl.dixu.client.GameEngine;
+import pl.dixu.client.MouseManager;
 import pl.dixu.client.SwingPresenter;
 import pl.dixu.server.Server;
 
@@ -12,6 +13,7 @@ public class App {
 
         Display display = new Display("Smash Up");
         SwingPresenter client = new SwingPresenter();
+        display.addListener(new MouseManager(client));
         GameEngine gameEngine = new GameEngine(display,client);
         Server server = new Server(client);
         gameEngine.start();

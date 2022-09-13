@@ -1,5 +1,6 @@
 package pl.dixu.server;
 
+import pl.dixu.client.Bound;
 import pl.dixu.server.player.Player;
 
 public class TableLayout {
@@ -59,5 +60,9 @@ public class TableLayout {
         Point playerHandPosition = getPlayerHandPosition();
         playerHandPosition.x= playerHandPosition.x + cardIndex *(LOCATION_ROW_GAP/2);
         return playerHandPosition;
+    }
+
+    public  Bound convertToBound(Point point) {
+        return new Bound(point, CARD_WIDTH, CARD_HEIGHT);
     }
 }

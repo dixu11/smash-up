@@ -55,4 +55,8 @@ public class SwingPresenter implements Presenter {
         g.translate(-point.x, -point.y);
         playerHand.render(g);
     }
+
+    public void click(Point point) {
+        playerHand.reactToClick(point);
+    }
 }

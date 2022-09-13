@@ -15,6 +15,7 @@ import java.util.Set;
 public class HandView implements Subscribable {
 
     private List<HandCardView> handCardViews = new ArrayList<>();
+    private HandCardView selected = null;
 
     public void render(Graphics graphics) {
         for (int i = 0; i < handCardViews.size(); i++) {
@@ -37,4 +38,19 @@ public class HandView implements Subscribable {
     public Set<Class<?>> supports() {
         return Set.of(DrawEvent.class);
     }
+
+    public void reactToClick(Point point) {
+        for (int i = 0; i < handCardViews.size(); i++) {
+            Point cardPosition = TableLayout.getInstance().getPlayerHandCardPosition(i);
+            Bound bound = TableLayout.getInstance().convertToBound(cardPosition);
+            if (bound.isInBound(point)) {
+                if (selected != null) {
+                    selected.setShine(false);
+                }
+                selected = handCardViews.get(i);
+                selected.setShine(true);
+            }
+        }
+    }
+
 }
