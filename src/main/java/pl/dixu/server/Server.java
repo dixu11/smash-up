@@ -1,6 +1,8 @@
 package pl.dixu.server;
 
 import pl.dixu.server.area.Area;
+import pl.dixu.server.bus.EventBus;
+import pl.dixu.server.bus.SyncEventBus;
 import pl.dixu.server.card.Card;
 import pl.dixu.server.player.Player;
 
@@ -11,6 +13,8 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+
+//on setup, on turn (macro)
 public class Server {
 
 
@@ -20,9 +24,11 @@ public class Server {
     private Queue<Player> players;
     private Queue<Card> areasDeck;
     private List<Area> activeAreas = new ArrayList<>();
+    private EventBus eventBus = new SyncEventBus();
 
     public Server(Presenter presenter) {
         this.presenter = presenter;
+        presenter.initEventBuss(eventBus);
     }
 
 
@@ -30,6 +36,7 @@ public class Server {
         onGameStart();
         presenter.startGame();
         presenter.initAreas(activeAreas);
+        playTurn();
     }
 
     private void onGameStart() {
@@ -38,13 +45,24 @@ public class Server {
         addStartingAreas(GameSetup.DEFAULT_STARTING_AREAS_COUNT);
     }
 
+    private void playTurn(){
+        Player actualPlayer = players.remove();
+        players.add(actualPlayer);
+        playTurn(actualPlayer);
+    }
 
+    private void playTurn(Player player) {
+        //setCurrentPlayer
+        player.draw(5);
+        //draw 5 cards
 
+        //do nothing, let Presenter trigger actions
+    }
 
     private Queue<Player> createPlayers(int count) {
         return IntStream.range(0, count)
                 .boxed()
-                .map(i -> new Player(cardFactory.getCards()))
+                .map(i -> new Player(cardFactory.getCards(), i, eventBus))
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 

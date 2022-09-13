@@ -22,7 +22,7 @@ public class LocationView {
 
     public void updateCard(Card card) {
         this.card = card;
-        image = ImageManager.getImage(card);
+        image = ImageManager.getImage(card.getId());
     }
 
 }

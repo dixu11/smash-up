@@ -51,4 +51,13 @@ public class TableLayout {
         return new Point(YOUR_DECK_X,YOUR_DECK_Y);
     }
 
+    public Point getPlayerHandPosition() {
+        return new Point(YOUR_DECK_X+LOCATION_ROW_GAP, YOUR_DECK_Y);
+    }
+
+    public Point getPlayerHandCardPosition(int cardIndex){
+        Point playerHandPosition = getPlayerHandPosition();
+        playerHandPosition.x= playerHandPosition.x + cardIndex *(LOCATION_ROW_GAP/2);
+        return playerHandPosition;
+    }
 }

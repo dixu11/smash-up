@@ -3,18 +3,19 @@ package pl.dixu.server.card;
 public class Card {
     private String name;
     private CardType type;
-    private int index = 1;
+    private String id;
 
-    public Card(String name, CardType type) {
+    public Card(String name, CardType type, String id) {
         this.name = name;
         this.type = type;
+        this.id = id;
     }
 
     public CardType getType() {
         return type;
     }
 
-    public int getIndex() {
-        return index;
+    public String getId() {
+        return id;
     }
 }

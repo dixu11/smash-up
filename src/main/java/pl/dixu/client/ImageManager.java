@@ -10,13 +10,8 @@ import java.io.IOException;
 
 public class ImageManager {
 
-    public static Image getImage(Card card) {
-        String cardFileName = switch (card.getType()) {
-            case LOCATION -> "location";
-            case ACTION -> "action";
-            case MINION -> "minion";
-        };
-        return readImage(cardFileName+ card.getIndex());
+    public static Image getImage(String cardId) {
+        return readImage(cardId);
     }
 
     public static DeckView initDeckCover(DeckType deckType){
